@@ -24,28 +24,29 @@ function App() {
   const [users, setUsers] = useState([]);
 
   const getUsers = async () => {
-    try{
+    try {
       const resposta = await axios.get('http://localhost:5000/cliente')
       setUsers(resposta.data);
-    }catch(e){
+    } catch (e) {
       alert(e)
-    }   
+    }
   };
 
-  useEffect(() => {getUsers();}, [setUsers]);
+  useEffect(() => { getUsers(); }, [setUsers]);
 
   return (
     <>
 
       <Container>
         <Title>Clientes</Title>
-        <Form users={users} getUsers={getUsers}/>
-        <Grid users={users}/>
+        <Form users={users} getUsers={getUsers} />
+        <Grid users={users} />
       </Container>
       <ToastContainer autoClose={5000} position={toast.POSITION.BOTTOM_LEFT} />
       <GlobalStyle />
     </>
   );
+
 }
 
 export default App;
